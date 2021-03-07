@@ -3554,7 +3554,7 @@ bool Force_CD_Available(int cd)
     static char _palette[768];
     static char _hold[256];
     static void* font;
-    static char* _volid[] = {"GDI", "NOD", "COVERT"};
+    static const char* _volid[] = {"GDI", "NOD", "COVERT"};
 
     int drive;
 
@@ -3785,7 +3785,7 @@ static void Do_Record_Playback(void)
  * HISTORY:                                                                *
  *   01/25/1996     : Created.                                             *
  *=========================================================================*/
-void const* Hires_Retrieve(char* name)
+void const* Hires_Retrieve(const char* name)
 {
     char filename[30];
 
