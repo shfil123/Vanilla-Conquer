@@ -170,7 +170,7 @@ void SHAEngine::Hash(void const* data, int32_t length)
  * HISTORY:                                                                                    *
  *   07/03/1996 JLB : Created.                                                                 *
  *=============================================================================================*/
-int SHAEngine::Result(void* result) const
+int SHAEngine::Result(void* result)
 {
     /*
     **	If the final hash result has already been calculated for the
@@ -218,9 +218,8 @@ int SHAEngine::Result(void* result) const
     Process_Block(&partial[0], acc);
 
     memcpy((char*)&FinalResult, &acc, sizeof(acc));
-    for (unsigned int index : FinalResult.Long) {
-        //	for (int index = 0; index < SRC_BLOCK_SIZE/sizeof(int32_t); index++) {
-        (int32_t&)index = htobe32(index);
+    for (unsigned int& i : FinalResult.Long) {
+        (int32_t&)i = htobe32(i);
     }
     (bool&)IsCached = true;
     memcpy(result, &FinalResult, sizeof(FinalResult));

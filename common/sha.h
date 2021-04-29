@@ -67,7 +67,7 @@ public:
     };
 
     // Fetch result as if source data were to stop now.
-    int Result(void* result) const;
+    int Result(void* result);
 
     void Hash(void const* data, int32_t length);
 
